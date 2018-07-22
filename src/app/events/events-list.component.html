@@ -1,0 +1,17 @@
+<p>
+  events-list works!
+</p>
+<div class="">{{event.id}}</div>
+<div class="well hoverwell thumbnail">
+    The {{event.name}} event at a cost of
+    <span [class.red]="event.price > 600" >{{event.price | currency }}</span> will be about
+    <div [ngClass]="{red: event.price > 600, bold:event.price > 800}" >{{event.price | currency }}</div>
+    <span [ngClass]="formatPrice()" >function formatted price is {{event.price | currency }}</span>
+    <div *ngIf="event.location">Location: {{event.location.address}}, {{event.location.city}}</div>
+    <div [ngSwitch]="event?.time">
+      <div *ngSwitchCase="'8:00 am'">Early Start</div>
+      <div *ngSwitchCase="'10:00 am'">Late Start</div>
+      <div *ngSwitchDefault>Normal Start</div>
+    </div>
+    {{event.description}} available at 5pm  {{event.date | date }}
+</div>
